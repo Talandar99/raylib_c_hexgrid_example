@@ -126,6 +126,8 @@ int main(void) {
 
         DrawVisibleFields(radius, grid_width, grid_height, grid);
         DrawHexGridOutline(radius, grid_width, grid_height, grid);
+        DEBUG_DrawCoordinatesOnHexGrid(radius, grid_width, grid_height, grid);
+
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
