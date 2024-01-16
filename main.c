@@ -14,9 +14,6 @@ void GenerateHexGrid(double radius, double grid_width, double grid_height,
     double offset_y = 100;
     float horiz = sqrtf(3) * radius;
     float vert = (3.0 / 2.0) * radius;
-    float triangle_radius = radius * 1.1;
-    float triangle_horiz = sqrtf(3) * triangle_radius;
-    float triangle_vert = (3.0 / 2.0) * triangle_radius;
 
     for (int y = 0; y < grid_height; y++) {
         for (int x = -(int)((grid_height - y) + 8);
@@ -38,10 +35,10 @@ void GenerateHexGrid(double radius, double grid_width, double grid_height,
     }
 };
 
-void DrawVisibleFields(double radius, double width, double height,
+void DrawVisibleFields(double radius, double grid_width, double grid_height,
                        struct GridTile** grid) {
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
+    for (int y = 0; y < grid_height; y++) {
+        for (int x = 0; x < grid_width; x++) {
             if (grid[x][y].is_visible) {
                 DrawPoly((Vector2){grid[x][y].screen_coordinates.x,
                                    grid[x][y].screen_coordinates.y},
@@ -50,10 +47,11 @@ void DrawVisibleFields(double radius, double width, double height,
         }
     }
 };
-void DEBUG_DrawCoordinatesOnHexGrid(double radius, double width, double height,
+void DEBUG_DrawCoordinatesOnHexGrid(double radius, double grid_width,
+                                    double grid_height,
                                     struct GridTile** grid) {
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
+    for (int y = 0; y < grid_height; y++) {
+        for (int x = 0; x < grid_width; x++) {
             if (grid[x][y].is_visible) {
                 double hex_x = grid[x][y].screen_coordinates.x;
                 double hex_y = grid[x][y].screen_coordinates.y;
@@ -66,10 +64,10 @@ void DEBUG_DrawCoordinatesOnHexGrid(double radius, double width, double height,
     }
 };
 
-void DrawHexGridOutline(double radius, double width, double height,
+void DrawHexGridOutline(double radius, double grid_width, double grid_height,
                         struct GridTile** grid) {
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
+    for (int y = 0; y < grid_height; y++) {
+        for (int x = 0; x < grid_width; x++) {
             if (grid[x][y].is_visible) {
                 double hex_x = grid[x][y].screen_coordinates.x;
                 double hex_y = grid[x][y].screen_coordinates.y;
