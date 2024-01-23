@@ -1,4 +1,4 @@
-# raylib_c_hexgrid_example
+# raylib_hexgrid_example
 This example shows how to create hexagonal grid in C using raylib
 
 ## How to run
